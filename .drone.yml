@@ -8,6 +8,7 @@ build:
 
 publish:
   docker:
+    context: upstream
     file: upstream/Dockerfile.env
     username: $$DOCKER_USER
     email: $$DOCKER_EMAIL
