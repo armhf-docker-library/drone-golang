@@ -1,0 +1,17 @@
+clone:
+  recursive: true
+
+build:
+  image: armhfbuild/alpine:3.2
+  commands:
+    - sed -i 's/FROM golang:1.5/FROM armhfbuild\/golang:1.5/' upstream/Dockerfile.env
+
+publish:
+  docker:
+    file: upstream/Dockerfile.env
+    username: $$DOCKER_USER
+    email: $$DOCKER_EMAIL
+    password: $$DOCKER_PASSWORD
+    repo: armhfbuild/drone-golang
+    tag: "1.5"
+    storage_driver: overlay
